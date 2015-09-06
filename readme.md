@@ -25,10 +25,10 @@ In order to work with them, you just have to make a POST request with the requir
 
 You will need:
 
-* login: just email and password;
-* signup: whatever you like: you can specify it in the config file;
-* recovery: just the user email address;
-* reset: token, email, password and password confirmation;
+* _login_: just email and password;
+* _signup_: whatever you like: you can specify it in the config file;
+* _recovery_: just the user email address;
+* _reset_: token, email, password and password confirmation;
 
 ### A Separate File for Routes
 
@@ -58,7 +58,9 @@ After all, that's just a boilerplate! :)
 
 ## Cross Origin Resource Sharing
 
-Thanks to the _barryvdh/laravel-cors_ package, you can handle CORS easily. Just check <a href="https://github.com/barryvdh/laravel-cors" target="_blank">the docs at this page</a>.
+If you want to enable CORS for a specific route or routes group, you just have to use the _cors_ middleware on them.
+
+Thanks to the _barryvdh/laravel-cors_ package, you can handle CORS easily. Just check <a href="https://github.com/barryvdh/laravel-cors" target="_blank">the docs at this page</a> for more info.
 
 ## Notes
 
