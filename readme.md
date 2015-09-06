@@ -10,6 +10,13 @@ It also benefits from two pacakages:
 
 With a similar foundation is really easy to get up and running in no time. I just made an "integration" work, adding here and there something that I found useful.
 
+## Installation
+
+* _git clone_ the repository;
+* composer install;
+
+Done!
+
 ## Main Features
 
 ### A Ready-To-Use AuthController
