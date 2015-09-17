@@ -75,4 +75,4 @@ I currently removed the _VerifyCsrfToken_ middleware from the _$middleware_ arra
 
 ## Feedback
 
-I actually made this project for personal purposes. I decided to share it here to help anyone with the same needs. If you have any feedback to improve it, feel free to make a suggestion, or open a PR!
+I currently made this project for personal purposes. I decided to share it here to help anyone with the same needs. If you have any feedback to improve it, feel free to make a suggestion, or open a PR!
