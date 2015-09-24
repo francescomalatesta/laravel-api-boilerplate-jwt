@@ -4,7 +4,6 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
 
-	// registering the "auth/login" route used to get a token
 	$api->post('auth/login', 'App\Api\V1\Controllers\AuthController@login');
 	$api->post('auth/signup', 'App\Api\V1\Controllers\AuthController@signup');
 	$api->post('auth/recovery', 'App\Api\V1\Controllers\AuthController@recovery');
