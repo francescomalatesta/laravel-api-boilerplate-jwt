@@ -13,7 +13,7 @@ return [
     | (prs), and the Unregistered tree (x).
     |
     | By default the Unregistered tree (x) is used, however, should you wish
-    | to you can regsiter your type with the IANA. For more details:
+    | to you can register your type with the IANA. For more details:
     | https://tools.ietf.org/html/rfc6838
     |
     */
@@ -135,14 +135,26 @@ return [
     | removed from the final response.
     |
     */
+
     'errorFormat' => [
-        'error' => [
-            'message' => ':message',
-            'errors' => ':errors',
-            'code' => ':code',
-            'status_code' => ':status_code',
-            'debug' => ':debug'
-        ]
+        'message' => ':message',
+        'errors' => ':errors',
+        'code' => ':code',
+        'status_code' => ':status_code',
+        'debug' => ':debug',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Middleware that will be applied globally to all API requests.
+    |
+    */
+
+    'middleware' => [
+
     ],
 
     /*
@@ -186,7 +198,7 @@ return [
     |
     */
 
-    'transformer' => env('API_TRANSFORMER', 'Dingo\Api\Transformer\Adapter\Fractal'),
+    'transformer' => env('API_TRANSFORMER', Dingo\Api\Transformer\Adapter\Fractal::class),
 
     /*
     |--------------------------------------------------------------------------
@@ -203,7 +215,7 @@ return [
 
     'formats' => [
 
-        'json' => 'Dingo\Api\Http\Response\Format\Json',
+        'json' => Dingo\Api\Http\Response\Format\Json::class,
 
     ],
 
