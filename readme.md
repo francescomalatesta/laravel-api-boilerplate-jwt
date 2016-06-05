@@ -39,7 +39,7 @@ You will need:
 
 ### A Separate File for Routes
 
-You can specify your routes in the *api_routes.php_ file, that will be automatically loaded. In this file you will find many examples of routes.
+You can specify your routes in the `api_routes.php` file, that will be automatically loaded. In this file you will find many examples of routes.
 
 ### Secrets Generation
 
