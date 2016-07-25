@@ -12,10 +12,9 @@ With a similar foundation is really easy to get up and running in no time. I jus
 
 ## Installation
 
-* _git clone_ the repository;
-* composer install;
-
-Done!
+```bash
+$ composer create-project francescomalatesta/laravel-api-boilerplate-jwt
+```
 
 ## Main Features
 

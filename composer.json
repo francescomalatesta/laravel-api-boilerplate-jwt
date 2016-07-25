@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "francescomalatesta/laravel-api-boilerplate-jwt",
+    "description": "An API Boilerplate to create a ready-to-use REST API in seconds.",
+    "keywords": ["laravel", "api", "boilerplate", "jwt"],
     "license": "MIT",
     "type": "project",
     "require": {
