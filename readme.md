@@ -16,6 +16,13 @@ With a similar foundation is really easy to get up and running in no time. I jus
 $ composer create-project francescomalatesta/laravel-api-boilerplate-jwt
 ```
 
+## Usage
+
+I wrote a couple of articles on this project that explain how to write an entire sample application with this boilerplate. You can find it on Sitepoint:
+
+* [How to Build an API-Only JWT-Powered Laravel App](https://www.sitepoint.com/how-to-build-an-api-only-jwt-powered-laravel-app/)
+* [How to Consume Laravel API with AngularJS](https://www.sitepoint.com/how-to-consume-laravel-api-with-angularjs/)
+
 ## Main Features
 
 ### A Ready-To-Use AuthController
