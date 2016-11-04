@@ -5,6 +5,7 @@ namespace App\Api\V1\Controllers;
 use JWTAuth;
 use Validator;
 use Config;
+use Hash;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -56,6 +57,7 @@ class AuthController extends Controller
         }
 
         User::unguard();
+        $userData['password'] = Hash::make($userData['password']);
         $user = User::create($userData);
         User::reguard();
 
