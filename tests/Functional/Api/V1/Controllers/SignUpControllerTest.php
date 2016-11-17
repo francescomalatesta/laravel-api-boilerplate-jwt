@@ -36,7 +36,7 @@ class SignUpControllerTest extends TestCase
         ])->assertResponseStatus(201);
     }
 
-    public function testSignUpValidationError()
+    public function testSignUpReturnsValidationError()
     {
         $this->post('api/signup', [
             'name' => 'Test User',

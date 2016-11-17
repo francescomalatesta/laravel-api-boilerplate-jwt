@@ -10,7 +10,7 @@ class ForgotPasswordControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function testSuccessfulForgotPassword()
+    public function testForgotPasswordRecoverySuccessfully()
     {
         $this->post('api/recovery', [
             'email' => 'test@email.com'
@@ -19,7 +19,7 @@ class ForgotPasswordControllerTest extends TestCase
         ])->assertResponseOk();
     }
 
-    public function testForgotPasswordWithNotFoundUser()
+    public function testForgotPasswordRecoveryReturnsUserNotFoundError()
     {
         $this->post('api/recovery', [
             'email' => 'unknown@email.com'
@@ -28,7 +28,7 @@ class ForgotPasswordControllerTest extends TestCase
         ])->assertResponseStatus(404);
     }
 
-    public function testForgotPasswordWithValidationErrors()
+    public function testForgotPasswordRecoveryReturnsValidationErrors()
     {
         $this->post('api/recovery', [
             'email' => 'i am not an email'

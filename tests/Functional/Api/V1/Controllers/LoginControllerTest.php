@@ -11,7 +11,7 @@ class LoginControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function testSuccessfulLogin()
+    public function testLoginSuccessfully()
     {
         $this->post('api/login', [
             'email' => 'test@email.com',
@@ -24,7 +24,7 @@ class LoginControllerTest extends TestCase
         ])->assertResponseOk();
     }
 
-    public function testLoginWithWrongCredentials()
+    public function testLoginWithReturnsWrongCredentialsError()
     {
         $this->post('api/login', [
             'email' => 'unknown@email.com',
@@ -34,7 +34,7 @@ class LoginControllerTest extends TestCase
         ])->assertResponseStatus(403);
     }
 
-    public function testLoginWithBadRequest()
+    public function testLoginWithReturnsValidationError()
     {
         $this->post('api/login', [
             'email' => 'test@email.com'
