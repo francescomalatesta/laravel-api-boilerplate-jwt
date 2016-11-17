@@ -10,4 +10,5 @@ $api->version('v1', function (Router $api) {
     $api->post('login', 'App\\Api\\V1\\Controllers\\LoginController@login');
 
     $api->post('recovery', 'App\\Api\\V1\\Controllers\\ForgotPasswordController@sendResetEmail');
+    $api->post('reset', 'App\\Api\\V1\\Controllers\\ResetPasswordController@resetPassword');
 });
