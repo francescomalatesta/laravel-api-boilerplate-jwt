@@ -2,10 +2,12 @@
 
 namespace App\Api\V1\Controllers;
 
-use Tymon\JWTAuth\Exceptions\JWTException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tymon\JWTAuth\JWTAuth;
 use App\Http\Controllers\Controller;
 use App\Api\V1\Requests\LoginRequest;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class LoginController extends Controller
 {
@@ -17,11 +19,11 @@ class LoginController extends Controller
             $token = $JWTAuth->attempt($credentials);
 
             if(!$token) {
-                return response()->json(['error' => 'forbidden'], 403);
+                throw new AccessDeniedHttpException();
             }
 
         } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            throw new HttpException(500);
         }
 
         return response()

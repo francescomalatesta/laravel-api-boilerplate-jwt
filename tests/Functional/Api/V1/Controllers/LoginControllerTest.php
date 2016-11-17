@@ -50,7 +50,7 @@ class LoginControllerTest extends TestCase
         $user = new User([
             'name' => 'Test',
             'email' => 'test@email.com',
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
 
         $user->save();
