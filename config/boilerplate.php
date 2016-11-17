@@ -16,6 +16,12 @@ return [
             'email' => 'required|email',
             'password' => 'required'
         ]
+    ],
+
+    'forgot_password' => [
+        'validation_rules' => [
+            'email' => 'required|email'
+        ]
     ]
 
 ];
