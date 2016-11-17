@@ -1,51 +1,47 @@
 ## Laravel API Boilerplate (JWT Edition)
 
-Laravel API Boilerplate is a ready-to-use "starting pack" that you can use to build your first API in seconds. As you can easily imagine, it is built on top of the awesome Laravel Framework.
+Laravel API Boilerplate is a "starter kit" you can use to build your first API in seconds. As you can easily imagine, it is built on top of the awesome Laravel Framework. This version is built on Laravel 5.3!
 
-It also benefits from three pacakages:
+It is built on top of three big guys:
 
 * JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
 * Dingo API - [dingo/api](https://github.com/dingo/api)
 * Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
 
-With a similar foundation is really easy to get up and running in no time. I just made an "integration" work, adding here and there something that I found useful.
+What I made is an integration of these three packages and a setup of some authentication and credentials recovery methods.
 
 ## Installation
 
-```bash
-$ composer create-project francescomalatesta/laravel-api-boilerplate-jwt
-```
+1. run `composer create-project francescomalatesta/laravel-api-boilerplate-jwt myNextProject`;
+2. have a coffee, nothing to do here;
+
+Once the project creation procedure will be completed, run the `php artisan migrate` command to install the required tables.
 
 ## Usage
 
-I wrote a couple of articles on this project that explain how to write an entire sample application with this boilerplate. You can find it on Sitepoint:
+I wrote a couple of articles on this project that explain how to write an entire sample application with this boilerplate. They cover the older version of this boilerplate, but all the concepts are the same. You can find them on Sitepoint:
+
+Just be aware that some options in the `config/boilerplate.php` file are changed, so take a look to it.
 
 * [How to Build an API-Only JWT-Powered Laravel App](https://www.sitepoint.com/how-to-build-an-api-only-jwt-powered-laravel-app/)
 * [How to Consume Laravel API with AngularJS](https://www.sitepoint.com/how-to-consume-laravel-api-with-angularjs/)
 
 ## Main Features
 
-### A Ready-To-Use AuthController
+### A Ready-To-Use Authentication Controllers
 
-I've put an "AuthController" in _App\Api\V1\Controllers_. It supports the four basic authentication/password recovery operations:
+You don't have to worry about authentication and password recovery anymore. I created four controllers you can find in the `App\Api\V1\Controllers` for those operations.
 
-* _login()_;
-* _signup()_;
-* _recovery()_;
-* _reset()_;
+For each controller there's an already setup route in `routes/api.php` file:
 
-In order to work with them, you just have to make a POST request with the required data.
-
-You will need:
-
-* _login_: just email and password;
-* _signup_: whatever you like: you can specify it in the config file;
-* _recovery_: just the user email address;
-* _reset_: token, email, password and password confirmation;
+* `POST api/auth/login`, to do the login and get your access token;
+* `POST api/auth/signup`, to create a new user into your application;
+* `POST api/auth/recovery`, to recover your credentials;
+* `POST api/auth/reset`, to reset your password after the recovery;
 
 ### A Separate File for Routes
 
-You can specify your routes in the `api_routes.php` file, that will be automatically loaded. In this file you will find many examples of routes.
+All the API routes can be found in the `routes/api.php` file. This also follow the Laravel 5.3 convention.
 
 ### Secrets Generation
 
@@ -53,31 +49,26 @@ Every time you create a new project starting from this repository, the _php arti
 
 ## Configuration
 
-As I already told before, this boilerplate is based on _dingo/api_ and _tymondesigns/jwt-auth_ packages. So, you can find many informations about configuration <a href="https://github.com/tymondesigns/jwt-auth/wiki/Configuration" target="_blank">here</a> and <a href="https://github.com/dingo/api/wiki/Configuration">here</a>.
+As I already said before, this boilerplate is based on _dingo/api_ and _tymondesigns/jwt-auth_ packages. So, you can find many informations about configuration <a href="https://github.com/tymondesigns/jwt-auth/wiki/Configuration" target="_blank">here</a> and <a href="https://github.com/dingo/api/wiki/Configuration">here</a>.
 
-However, there are some extra options that I placed in a _config/boilerplate.php_ file.
+However, there are some extra options that I placed in a _config/boilerplate.php_ file:
 
-* **signup_fields**: you can use this option to specify what fields you want to use to create your user;
-* **signup_fields_rules**: you can use this option to specify the rules you want to use for the validator instance in the signup method;
-* **signup_token_release**: if "true", an access token will be released from the signup endpoint if everything goes well. Otherwise, you will just get a _201 Created_ response;
-* **reset_token_release**: if "true", an access token will be released from the signup endpoint if everything goes well. Otherwise, you will just get a _200_ response;
-* **recovery_email_subject**: here you can specify the subject for your recovery data email;
+* `sign_up.release_token`: set it to `true` if you want your app release the token right after the sign up process;
+* `reset_password.release_token`: set it to `true` if you want your app release the token right after the password reset process;
+
+There are also the validation rules for every action (login, sign up, recovery and reset). Feel free to customize it for your needs.
 
 ## Creating Endpoints
 
-You can create endpoints in the same way you could to with using the single _dingo/api_ package. You can <a href="https://github.com/dingo/api/wiki/Creating-API-Endpoints" target="_blank">read its documentation</a> for details.
+You can create endpoints in the same way you could to with using the single _dingo/api_ package. You can <a href="https://github.com/dingo/api/wiki/Creating-API-Endpoints" target="_blank">read its documentation</a> for details. After all, that's just a boilerplate! :)
 
-After all, that's just a boilerplate! :)
+However, I added some example routes to the `routes/api.php` file to give you immediately an idea.
 
 ## Cross Origin Resource Sharing
 
 If you want to enable CORS for a specific route or routes group, you just have to use the _cors_ middleware on them.
 
 Thanks to the _barryvdh/laravel-cors_ package, you can handle CORS easily. Just check <a href="https://github.com/barryvdh/laravel-cors" target="_blank">the docs at this page</a> for more info.
-
-## Notes
-
-I currently removed the _VerifyCsrfToken_ middleware from the _$middleware_ array in _app/Http/Kernel.php_ file. If you want to use it in your project, just use the route middleware _csrf_ you can find, in the same class, in the _$routeMiddleware_ array.
 
 ## Feedback
 
