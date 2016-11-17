@@ -10,33 +10,6 @@ class ForgotPasswordControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function testForgotPasswordRecoverySuccessfully()
-    {
-        $this->post('api/recovery', [
-            'email' => 'test@email.com'
-        ])->seeJson([
-            'status' => 'ok'
-        ])->assertResponseOk();
-    }
-
-    public function testForgotPasswordRecoveryReturnsUserNotFoundError()
-    {
-        $this->post('api/recovery', [
-            'email' => 'unknown@email.com'
-        ])->seeJsonStructure([
-            'error'
-        ])->assertResponseStatus(404);
-    }
-
-    public function testForgotPasswordRecoveryReturnsValidationErrors()
-    {
-        $this->post('api/recovery', [
-            'email' => 'i am not an email'
-        ])->seeJsonStructure([
-            'error'
-        ])->assertResponseStatus(422);
-    }
-
     public function setUp()
     {
         parent::setUp();
@@ -48,5 +21,32 @@ class ForgotPasswordControllerTest extends TestCase
         ]);
 
         $user->save();
+    }
+
+    public function testForgotPasswordRecoverySuccessfully()
+    {
+        $this->post('api/auth/recovery', [
+            'email' => 'test@email.com'
+        ])->seeJson([
+            'status' => 'ok'
+        ])->assertResponseOk();
+    }
+
+    public function testForgotPasswordRecoveryReturnsUserNotFoundError()
+    {
+        $this->post('api/auth/recovery', [
+            'email' => 'unknown@email.com'
+        ])->seeJsonStructure([
+            'error'
+        ])->assertResponseStatus(404);
+    }
+
+    public function testForgotPasswordRecoveryReturnsValidationErrors()
+    {
+        $this->post('api/auth/recovery', [
+            'email' => 'i am not an email'
+        ])->seeJsonStructure([
+            'error'
+        ])->assertResponseStatus(422);
     }
 }

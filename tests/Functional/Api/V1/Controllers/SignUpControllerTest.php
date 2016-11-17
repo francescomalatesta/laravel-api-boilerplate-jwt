@@ -12,7 +12,7 @@ class SignUpControllerTest extends TestCase
 
     public function testSignUpSuccessfully()
     {
-        $this->post('api/signup', [
+        $this->post('api/auth/signup', [
             'name' => 'Test User',
             'email' => 'test@email.com',
             'password' => '123456'
@@ -25,7 +25,7 @@ class SignUpControllerTest extends TestCase
     {
         Config::set('boilerplate.sign_up.release_token', true);
 
-        $this->post('api/signup', [
+        $this->post('api/auth/signup', [
             'name' => 'Test User',
             'email' => 'test@email.com',
             'password' => '123456'
@@ -38,7 +38,7 @@ class SignUpControllerTest extends TestCase
 
     public function testSignUpReturnsValidationError()
     {
-        $this->post('api/signup', [
+        $this->post('api/auth/signup', [
             'name' => 'Test User',
             'email' => 'test@email.com'
         ])->seeJsonStructure([
