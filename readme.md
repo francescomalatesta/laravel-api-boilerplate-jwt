@@ -26,6 +26,8 @@ Just be aware that some options in the `config/boilerplate.php` file are changed
 * [How to Build an API-Only JWT-Powered Laravel App](https://www.sitepoint.com/how-to-build-an-api-only-jwt-powered-laravel-app/)
 * [How to Consume Laravel API with AngularJS](https://www.sitepoint.com/how-to-consume-laravel-api-with-angularjs/)
 
+**WARNING:** the articles are old and Laravel 5.1 related. Just use them as "inspiration". Even without updated tutorials, they should be enough. 
+
 ## Main Features
 
 ### A Ready-To-Use Authentication Controllers
