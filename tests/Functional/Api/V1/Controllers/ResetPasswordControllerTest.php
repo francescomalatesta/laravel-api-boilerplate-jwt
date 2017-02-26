@@ -26,7 +26,7 @@ class ResetPasswordControllerTest extends TestCase
 
         DB::table('password_resets')->insert([
             'email' => 'test@email.com',
-            'token' => 'my_super_secret_code',
+            'token' => bcrypt('my_super_secret_code'),
             'created_at' => Carbon::now()
         ]);
     }
@@ -38,9 +38,9 @@ class ResetPasswordControllerTest extends TestCase
             'token' => 'my_super_secret_code',
             'password' => 'mynewpass',
             'password_confirmation' => 'mynewpass'
-        ])->seeJson([
+        ])->assertJson([
             'status' => 'ok'
-        ])->assertResponseOk();
+        ])->isOk();
     }
 
     public function testResetSuccessfullyWithTokenRelease()
@@ -52,12 +52,12 @@ class ResetPasswordControllerTest extends TestCase
             'token' => 'my_super_secret_code',
             'password' => 'mynewpass',
             'password_confirmation' => 'mynewpass'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'status',
             'token'
-        ])->seeJson([
+        ])->assertJson([
             'status' => 'ok'
-        ])->assertResponseOk();
+        ])->isOk();
     }
 
     public function testResetReturnsProcessError()
@@ -67,9 +67,9 @@ class ResetPasswordControllerTest extends TestCase
             'token' => 'this_code_is_invalid',
             'password' => 'mynewpass',
             'password_confirmation' => 'mynewpass'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'error'
-        ])->assertResponseStatus(500);
+        ])->assertStatus(500);
     }
 
     public function testResetReturnsValidationError()
@@ -78,8 +78,8 @@ class ResetPasswordControllerTest extends TestCase
             'email' => 'test@email.com',
             'token' => 'my_super_secret_code',
             'password' => 'mynewpass'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'error'
-        ])->assertResponseStatus(422);
+        ])->assertStatus(422);
     }
 }

@@ -16,9 +16,9 @@ class SignUpControllerTest extends TestCase
             'name' => 'Test User',
             'email' => 'test@email.com',
             'password' => '123456'
-        ])->seeJson([
+        ])->assertJson([
             'status' => 'ok'
-        ])->assertResponseStatus(201);
+        ])->assertStatus(201);
     }
 
     public function testSignUpSuccessfullyWithTokenRelease()
@@ -29,11 +29,11 @@ class SignUpControllerTest extends TestCase
             'name' => 'Test User',
             'email' => 'test@email.com',
             'password' => '123456'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'status', 'token'
-        ])->seeJson([
+        ])->assertJson([
             'status' => 'ok'
-        ])->assertResponseStatus(201);
+        ])->assertStatus(201);
     }
 
     public function testSignUpReturnsValidationError()
@@ -41,8 +41,8 @@ class SignUpControllerTest extends TestCase
         $this->post('api/auth/signup', [
             'name' => 'Test User',
             'email' => 'test@email.com'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'error'
-        ])->assertResponseStatus(422);
+        ])->assertStatus(422);
     }
 }

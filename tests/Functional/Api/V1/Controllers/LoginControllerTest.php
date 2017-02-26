@@ -29,12 +29,12 @@ class LoginControllerTest extends TestCase
         $this->post('api/auth/login', [
             'email' => 'test@email.com',
             'password' => '123456'
-        ])->seeJson([
+        ])->assertJson([
             'status' => 'ok'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'status',
             'token'
-        ])->assertResponseOk();
+        ])->isOk();
     }
 
     public function testLoginWithReturnsWrongCredentialsError()
@@ -42,17 +42,17 @@ class LoginControllerTest extends TestCase
         $this->post('api/auth/login', [
             'email' => 'unknown@email.com',
             'password' => '123456'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'error'
-        ])->assertResponseStatus(403);
+        ])->assertStatus(403);
     }
 
     public function testLoginWithReturnsValidationError()
     {
         $this->post('api/auth/login', [
             'email' => 'test@email.com'
-        ])->seeJsonStructure([
+        ])->assertJsonStructure([
             'error'
-        ])->assertResponseStatus(422);
+        ])->assertStatus(422);
     }
 }
