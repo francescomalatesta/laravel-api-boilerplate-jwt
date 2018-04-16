@@ -36,12 +36,7 @@ class LogoutControllerTest extends TestCase
         $responseJSON = json_decode($response->getContent(), true);
         $token = $responseJSON['token'];
 
-        $this->post('api/auth/logout', [], [
-            'Authorization' => 'Bearer ' . $token
-        ])->assertStatus(200);
-
-        $this->post('api/auth/logout', [], [
-            'Authorization' => 'Bearer ' . $token
-        ])->assertStatus(500);
+        $this->post('api/auth/logout?token=' . $token, [], [])->assertStatus(200);
+        $this->post('api/auth/logout?token=' . $token, [], [])->assertStatus(401);
     }
 }
