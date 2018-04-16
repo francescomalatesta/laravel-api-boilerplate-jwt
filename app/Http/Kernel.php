@@ -2,9 +2,8 @@
 
 namespace App\Http;
 
-use Tymon\JWTAuth\Middleware\RefreshToken;
-use Tymon\JWTAuth\Middleware\GetUserFromToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Tymon\JWTAuth\Http\Middleware\RefreshToken;
 
 class Kernel extends HttpKernel
 {
@@ -55,7 +54,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'jwt.auth' => GetUserFromToken::class,
-        'jwt.refresh' => RefreshToken::class,
+        'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'jwt.refresh' => RefreshToken::class
     ];
 }

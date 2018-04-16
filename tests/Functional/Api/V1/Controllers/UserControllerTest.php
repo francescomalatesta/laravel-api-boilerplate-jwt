@@ -36,9 +36,7 @@ class UserControllerTest extends TestCase
         $responseJSON = json_decode($response->getContent(), true);
         $token = $responseJSON['token'];
 
-        $this->get('api/auth/me', [], [
-            'Authorization' => 'Bearer ' . $token
-        ])->assertJson([
+        $this->get('api/auth/me?token=' . $token, [], [])->assertJson([
             'name' => 'Test',
             'email' => 'test@email.com'
         ])->isOk();
