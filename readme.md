@@ -1,8 +1,8 @@
-## Laravel API Boilerplate (JWT Edition) for Laravel 5.5
+## Laravel API Boilerplate (JWT Edition) for Laravel 5.6
 
 [![CryptoTip](https://img.shields.io/badge/Donate%20with-CryptoTip-blue.svg?style=flat-square&colorB=007bff)](https://cryptotip.it/p/francescomalatesta)
 
-Laravel API Boilerplate is a "starter kit" you can use to build your first API in seconds. As you can easily imagine, it is built on top of the awesome Laravel Framework. This version is built on Laravel 5.5!
+Laravel API Boilerplate is a "starter kit" you can use to build your first API in seconds. As you can easily imagine, it is built on top of the awesome Laravel Framework. This version is built on Laravel 5.6!
 
 It is built on top of three big guys:
 
@@ -32,7 +32,7 @@ Just be aware that some options in the `config/boilerplate.php` file are changed
 
 ## Main Features
 
-### A Ready-To-Use Authentication Controllers
+### Ready-To-Use Authentication Controllers
 
 You don't have to worry about authentication and password recovery anymore. I created four controllers you can find in the `App\Api\V1\Controllers` for those operations.
 
@@ -46,9 +46,9 @@ For each controller there's an already setup route in `routes/api.php` file:
 * `POST api/auth/logout`, to log out the user by invalidating the passed token;
 * `GET api/auth/me`, to get current user data;
 
-### A Separate File for Routes
+### Separate File for Routes
 
-All the API routes can be found in the `routes/api.php` file. This also follow the Laravel 5.5 convention.
+All the API routes can be found in the `routes/api.php` file. This also follow the Laravel 5.6 convention.
 
 ### Secrets Generation
 
@@ -143,7 +143,7 @@ If you want to contribute to this project, feel free to do it and open a PR. How
 In order to run tests:
 
 * create a `homestead_test` database on your machine;
-* run `phpunit`;
+* run `vendor/bin/phpunit`;
 
 If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
 
