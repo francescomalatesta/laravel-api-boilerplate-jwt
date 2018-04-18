@@ -2,7 +2,6 @@
 
 namespace App\Functional\Api\V1\Controllers;
 
-use Hash;
 use App\User;
 use App\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -18,7 +17,7 @@ class LoginControllerTest extends TestCase
         $user = new User([
             'name' => 'Test',
             'email' => 'test@email.com',
-            'password' => '123456'
+            'password' => '123456',
         ]);
 
         $user->save();
@@ -28,13 +27,13 @@ class LoginControllerTest extends TestCase
     {
         $this->post('api/auth/login', [
             'email' => 'test@email.com',
-            'password' => '123456'
+            'password' => '123456',
         ])->assertJson([
-            'status' => 'ok'
+            'status' => 'ok',
         ])->assertJsonStructure([
             'status',
             'token',
-            'expires_in'
+            'expires_in',
         ])->isOk();
     }
 
@@ -42,18 +41,18 @@ class LoginControllerTest extends TestCase
     {
         $this->post('api/auth/login', [
             'email' => 'unknown@email.com',
-            'password' => '123456'
+            'password' => '123456',
         ])->assertJsonStructure([
-            'error'
+            'error',
         ])->assertStatus(403);
     }
 
     public function testLoginWithReturnsValidationError()
     {
         $this->post('api/auth/login', [
-            'email' => 'test@email.com'
+            'email' => 'test@email.com',
         ])->assertJsonStructure([
-            'error'
+            'error',
         ])->assertStatus(422);
     }
 }

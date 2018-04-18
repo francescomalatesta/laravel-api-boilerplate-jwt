@@ -15,19 +15,19 @@ class ForgotPasswordController extends Controller
     {
         $user = User::where('email', '=', $request->get('email'))->first();
 
-        if(!$user) {
+        if (! $user) {
             throw new NotFoundHttpException();
         }
 
         $broker = $this->getPasswordBroker();
         $sendingResponse = $broker->sendResetLink($request->only('email'));
 
-        if($sendingResponse !== Password::RESET_LINK_SENT) {
+        if ($sendingResponse !== Password::RESET_LINK_SENT) {
             throw new HttpException(500);
         }
 
         return response()->json([
-            'status' => 'ok'
+            'status' => 'ok',
         ], 200);
     }
 

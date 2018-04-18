@@ -14,20 +14,21 @@ class SignUpController extends Controller
     public function signUp(SignUpRequest $request, JWTAuth $JWTAuth)
     {
         $user = new User($request->all());
-        if(!$user->save()) {
+        if (! $user->save()) {
             throw new HttpException(500);
         }
 
-        if(!Config::get('boilerplate.sign_up.release_token')) {
+        if (! Config::get('boilerplate.sign_up.release_token')) {
             return response()->json([
-                'status' => 'ok'
+                'status' => 'ok',
             ], 201);
         }
 
         $token = $JWTAuth->fromUser($user);
+
         return response()->json([
             'status' => 'ok',
-            'token' => $token
+            'token' => $token,
         ], 201);
     }
 }

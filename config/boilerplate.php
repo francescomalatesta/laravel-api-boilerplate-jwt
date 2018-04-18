@@ -13,8 +13,8 @@ return [
         'validation_rules' => [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
-        ]
+            'password' => 'required',
+        ],
     ],
 
     // these options are related to the login procedure
@@ -23,8 +23,8 @@ return [
         // here you can specify some validation rules for your login request
         'validation_rules' => [
             'email' => 'required|email',
-            'password' => 'required'
-        ]
+            'password' => 'required',
+        ],
     ],
 
     // these options are related to the password recovery procedure
@@ -32,8 +32,8 @@ return [
 
         // here you can specify some validation rules for your password recovery procedure
         'validation_rules' => [
-            'email' => 'required|email'
-        ]
+            'email' => 'required|email',
+        ],
     ],
 
     // these options are related to the password recovery procedure
@@ -47,8 +47,8 @@ return [
         'validation_rules' => [
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed'
-        ]
-    ]
+            'password' => 'required|confirmed',
+        ],
+    ],
 
 ];
