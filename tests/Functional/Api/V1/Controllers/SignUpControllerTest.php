@@ -15,9 +15,9 @@ class SignUpControllerTest extends TestCase
         $this->post('api/auth/signup', [
             'name' => 'Test User',
             'email' => 'test@email.com',
-            'password' => '123456'
+            'password' => '123456',
         ])->assertJson([
-            'status' => 'ok'
+            'status' => 'ok',
         ])->assertStatus(201);
     }
 
@@ -28,11 +28,11 @@ class SignUpControllerTest extends TestCase
         $this->post('api/auth/signup', [
             'name' => 'Test User',
             'email' => 'test@email.com',
-            'password' => '123456'
+            'password' => '123456',
         ])->assertJsonStructure([
-            'status', 'token'
+            'status', 'token',
         ])->assertJson([
-            'status' => 'ok'
+            'status' => 'ok',
         ])->assertStatus(201);
     }
 
@@ -40,9 +40,9 @@ class SignUpControllerTest extends TestCase
     {
         $this->post('api/auth/signup', [
             'name' => 'Test User',
-            'email' => 'test@email.com'
+            'email' => 'test@email.com',
         ])->assertJsonStructure([
-            'error'
+            'error',
         ])->assertStatus(422);
     }
 }

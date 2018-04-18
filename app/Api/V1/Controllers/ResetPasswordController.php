@@ -20,11 +20,11 @@ class ResetPasswordController extends Controller
             }
         );
 
-        if($response !== Password::PASSWORD_RESET) {
+        if ($response !== Password::PASSWORD_RESET) {
             throw new HttpException(500);
         }
 
-        if(!Config::get('boilerplate.reset_password.release_token')) {
+        if (! Config::get('boilerplate.reset_password.release_token')) {
             return response()->json([
                 'status' => 'ok',
             ]);
@@ -34,7 +34,7 @@ class ResetPasswordController extends Controller
 
         return response()->json([
             'status' => 'ok',
-            'token' => $JWTAuth->fromUser($user)
+            'token' => $JWTAuth->fromUser($user),
         ]);
     }
 

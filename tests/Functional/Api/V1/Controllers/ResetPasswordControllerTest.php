@@ -20,14 +20,14 @@ class ResetPasswordControllerTest extends TestCase
         $user = new User([
             'name' => 'Test User',
             'email' => 'test@email.com',
-            'password' => '123456'
+            'password' => '123456',
         ]);
         $user->save();
 
         DB::table('password_resets')->insert([
             'email' => 'test@email.com',
             'token' => bcrypt('my_super_secret_code'),
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
         ]);
     }
 
@@ -37,9 +37,9 @@ class ResetPasswordControllerTest extends TestCase
             'email' => 'test@email.com',
             'token' => 'my_super_secret_code',
             'password' => 'mynewpass',
-            'password_confirmation' => 'mynewpass'
+            'password_confirmation' => 'mynewpass',
         ])->assertJson([
-            'status' => 'ok'
+            'status' => 'ok',
         ])->isOk();
     }
 
@@ -51,12 +51,12 @@ class ResetPasswordControllerTest extends TestCase
             'email' => 'test@email.com',
             'token' => 'my_super_secret_code',
             'password' => 'mynewpass',
-            'password_confirmation' => 'mynewpass'
+            'password_confirmation' => 'mynewpass',
         ])->assertJsonStructure([
             'status',
-            'token'
+            'token',
         ])->assertJson([
-            'status' => 'ok'
+            'status' => 'ok',
         ])->isOk();
     }
 
@@ -66,9 +66,9 @@ class ResetPasswordControllerTest extends TestCase
             'email' => 'unknown@email.com',
             'token' => 'this_code_is_invalid',
             'password' => 'mynewpass',
-            'password_confirmation' => 'mynewpass'
+            'password_confirmation' => 'mynewpass',
         ])->assertJsonStructure([
-            'error'
+            'error',
         ])->assertStatus(500);
     }
 
@@ -77,9 +77,9 @@ class ResetPasswordControllerTest extends TestCase
         $this->post('api/auth/reset', [
             'email' => 'test@email.com',
             'token' => 'my_super_secret_code',
-            'password' => 'mynewpass'
+            'password' => 'mynewpass',
         ])->assertJsonStructure([
-            'error'
+            'error',
         ])->assertStatus(422);
     }
 }
