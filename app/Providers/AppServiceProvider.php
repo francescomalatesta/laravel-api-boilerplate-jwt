@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (DB::getDriverName() === 'sqlite') {
+            $path = DB::getConfig('database');
+            if (!file_exists($path) && is_dir(dirname($path))) {
+                touch($path);
+            }
+        }
     }
 
     /**
