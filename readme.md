@@ -19,6 +19,10 @@ What I made is really simple: an integration of these three packages and a setup
 
 Once the project creation procedure will be completed, run the `php artisan migrate` command to install the required tables.
 
+## Run Application
+
+* run `php artisan serve`
+
 ## Usage
 
 I wrote a couple of articles on this project that explain how to write an entire sample application with this boilerplate. They cover the older version of this boilerplate, but all the concepts are the same. You can find them on Sitepoint:
