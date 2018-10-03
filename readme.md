@@ -1,23 +1,25 @@
 ## Laravel API Boilerplate (JWT Edition) for Laravel 5.6
 
-[![CryptoTip](https://img.shields.io/badge/Donate%20with-CryptoTip-blue.svg?style=flat-square&colorB=007bff)](https://cryptotip.it/p/francescomalatesta)
-
 Laravel API Boilerplate is a "starter kit" you can use to build your first API in seconds. As you can easily imagine, it is built on top of the awesome Laravel Framework. This version is built on Laravel 5.6!
 
 It is built on top of three big guys:
 
-* JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
-* Dingo API - [dingo/api](https://github.com/dingo/api)
-* Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
+- JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
+- Dingo API - [dingo/api](https://github.com/dingo/api)
+- Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
 
 What I made is really simple: an integration of these three packages and a setup of some authentication and credentials recovery methods.
 
 ## Installation
 
-1. run `composer create-project francescomalatesta/laravel-api-boilerplate-jwt myNextProject`;
+1. run `composer create-project pktharindu/laravel-api-boilerplate-jwt myNextProject`;
 2. have a coffee, nothing to do here;
 
 Once the project creation procedure will be completed, run the `php artisan migrate` command to install the required tables.
+
+## Run Application
+
+- run `php artisan serve`;
 
 ## Usage
 
@@ -25,10 +27,10 @@ I wrote a couple of articles on this project that explain how to write an entire
 
 Just be aware that some options in the `config/boilerplate.php` file are changed, so take a look to it.
 
-* [How to Build an API-Only JWT-Powered Laravel App](https://www.sitepoint.com/how-to-build-an-api-only-jwt-powered-laravel-app/)
-* [How to Consume Laravel API with AngularJS](https://www.sitepoint.com/how-to-consume-laravel-api-with-angularjs/)
+- [How to Build an API-Only JWT-Powered Laravel App](https://www.sitepoint.com/how-to-build-an-api-only-jwt-powered-laravel-app/)
+- [How to Consume Laravel API with AngularJS](https://www.sitepoint.com/how-to-consume-laravel-api-with-angularjs/)
 
-**WARNING:** the articles are old and Laravel 5.1 related. Just use them as "inspiration". Even without updated tutorials, they should be enough. 
+**WARNING:** the articles are old and Laravel 5.1 related. Just use them as "inspiration". Even without updated tutorials, they should be enough.
 
 ## Main Features
 
@@ -38,13 +40,13 @@ You don't have to worry about authentication and password recovery anymore. I cr
 
 For each controller there's an already setup route in `routes/api.php` file:
 
-* `POST api/auth/login`, to do the login and get your access token;
-* `POST api/auth/refresh`, to refresh an existent access token by getting a new one;
-* `POST api/auth/signup`, to create a new user into your application;
-* `POST api/auth/recovery`, to recover your credentials;
-* `POST api/auth/reset`, to reset your password after the recovery;
-* `POST api/auth/logout`, to log out the user by invalidating the passed token;
-* `GET api/auth/me`, to get current user data;
+- `POST api/auth/login`, to do the login and get your access token;
+- `POST api/auth/refresh`, to refresh an existent access token by getting a new one;
+- `POST api/auth/signup`, to create a new user into your application;
+- `POST api/auth/recovery`, to recover your credentials;
+- `POST api/auth/reset`, to reset your password after the recovery;
+- `POST api/auth/logout`, to log out the user by invalidating the passed token;
+- `GET api/auth/me`, to get current user data;
 
 ### Separate File for Routes
 
@@ -65,11 +67,11 @@ return [
 
     // these options are related to the sign-up procedure
     'sign_up' => [
-        
+
         // this option must be set to true if you want to release a token
         // when your user successfully terminates the sign-in procedure
         'release_token' => env('SIGN_UP_RELEASE_TOKEN', false),
-        
+
         // here you can specify some validation rules for your sign-in request
         'validation_rules' => [
             'name' => 'required',
@@ -80,7 +82,7 @@ return [
 
     // these options are related to the login procedure
     'login' => [
-        
+
         // here you can specify some validation rules for your login request
         'validation_rules' => [
             'email' => 'required|email',
@@ -90,7 +92,7 @@ return [
 
     // these options are related to the password recovery procedure
     'forgot_password' => [
-        
+
         // here you can specify some validation rules for your password recovery procedure
         'validation_rules' => [
             'email' => 'required|email'
@@ -99,11 +101,11 @@ return [
 
     // these options are related to the password recovery procedure
     'reset_password' => [
-        
+
         // this option must be set to true if you want to release a token
         // when your user successfully terminates the password reset procedure
         'release_token' => env('PASSWORD_RESET_RELEASE_TOKEN', false),
-        
+
         // here you can specify some validation rules for your password recovery procedure
         'validation_rules' => [
             'token' => 'required',
@@ -119,8 +121,8 @@ As I already said before, this boilerplate is based on _dingo/api_ and _tymondes
 
 However, there are some extra options that I placed in a _config/boilerplate.php_ file:
 
-* `sign_up.release_token`: set it to `true` if you want your app release the token right after the sign up process;
-* `reset_password.release_token`: set it to `true` if you want your app release the token right after the password reset process;
+- `sign_up.release_token`: set it to `true` if you want your app release the token right after the sign up process;
+- `reset_password.release_token`: set it to `true` if you want your app release the token right after the password reset process;
 
 There are also the validation rules for every action (login, sign up, recovery and reset). Feel free to customize it for your needs.
 
@@ -142,8 +144,8 @@ If you want to contribute to this project, feel free to do it and open a PR. How
 
 In order to run tests:
 
-* create a `homestead_test` database on your machine;
-* run `vendor/bin/phpunit`;
+- create a `homestead_test` database on your machine;
+- run `vendor/bin/phpunit` or `vendor\bin\phpunit` for window users;
 
 If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
 
