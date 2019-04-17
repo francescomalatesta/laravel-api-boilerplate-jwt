@@ -1,7 +1,5 @@
 ## Laravel API Boilerplate (JWT Edition) for Laravel 5.6
 
-[![CryptoTip](https://img.shields.io/badge/Donate%20with-CryptoTip-blue.svg?style=flat-square&colorB=007bff)](https://cryptotip.it/p/francescomalatesta)
-
 Laravel API Boilerplate is a "starter kit" you can use to build your first API in seconds. As you can easily imagine, it is built on top of the awesome Laravel Framework. This version is built on Laravel 5.6!
 
 It is built on top of three big guys:
