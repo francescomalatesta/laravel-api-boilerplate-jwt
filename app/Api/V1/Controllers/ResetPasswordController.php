@@ -12,6 +12,9 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ResetPasswordController extends Controller
 {
+    /**
+     * ! errror not working
+     */
     public function resetPassword(ResetPasswordRequest $request, JWTAuth $JWTAuth)
     {
         $response = $this->broker()->reset(
