@@ -14,14 +14,14 @@ abstract class TestCase extends BaseTestCase
      */
     protected $baseUrl = 'http://localhost';
 
-    public function setUp()
+    public function setUp() : void
     {
         touch('./tests.sqlite');
 
         parent::setUp();
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         unlink('./tests.sqlite');
     }
