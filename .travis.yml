@@ -25,4 +25,5 @@ before_script:
 - travis_retry composer install ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
-- vendor/bin/phpunit
+- vendor/bin/phpunit -c phpunit.xml
+
