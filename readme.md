@@ -140,10 +140,8 @@ If you want to contribute to this project, feel free to do it and open a PR. How
 
 In order to run tests:
 
-* create a `homestead_test` database on your machine;
-* run `vendor/bin/phpunit`;
-
-If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
+* be sure to have the PDO sqlite extension installed in your environment;
+* run `php vendor/bin/phpunit`;
 
 ## Feedback
 
