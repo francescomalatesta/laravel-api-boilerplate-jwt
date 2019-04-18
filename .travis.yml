@@ -22,7 +22,7 @@ cache:
 before_script:
 - cp .env.travis .env
 - travis_retry composer self-update
-- travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+- travis_retry composer install ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
 - vendor/bin/phpunit
