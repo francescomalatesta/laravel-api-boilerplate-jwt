@@ -16,6 +16,8 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        //uncomment this to enable global CORS
+        //\App\Http\Middleware\corsglobal::class,
     ];
 
     /**
